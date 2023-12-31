@@ -1,4 +1,4 @@
-# CENTRAL SET
+# CENTRAL SET CLI
 
 
 ```python
@@ -20,11 +20,6 @@ cs = CentralSet(host = 'http://localhost:8080')\
 ```python
 cs.token
 ```
-
-
-
-
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InJvb3QiLCJmaXJzdF9uYW1lIjoiU3VwZXIiLCJsYXN0X25hbWUiOiJBZG1pbiIsImVtYWlsIjoicm9vdEBkb21haW4uY29tIiwicGhvbmUiOm51bGwsInBhc3N3b3JkIjoiJDJiJDEyJG8ycWxPaU1QOXMwMHFJVXhQLjhjYmU2S3NweFl0VXptWEFyalIuZVJQdVhjbTB3TGJDMERTIiwicm9sZV9pZCI6MSwibGFuZ19pZCI6MSwidGltZXpvbmUiOm51bGwsImF0dGFjaF9wcm9maWxlX3BpYyI6ImZhdmljb24xLmljbyIsImFjdGl2ZSI6dHJ1ZSwiY3JlYXRlZF9hdCI6IjIwMjItMDItMDZUMTk6NTE6MTUiLCJ1cGRhdGVkX2F0IjoiMjAyMi0wOS0xN1QxODozODoyNy4zNjg5MjYiLCJleGNsdWRlZCI6ZmFsc2UsImV4cCI6MTcwMTAzMjk0NCwiaWF0IjoxNzAwMzQxNzQ0LCJuYmYiOjE3MDAzNDE3NDR9.-VCwGf2xh-rQ7R56Q2SPC31PaU5d5QZA8oESNcr9ZGQ'
 
 
 
@@ -117,7 +112,7 @@ print(data)
 
 
 ```python
-file_path = '/path/to/file/invitation.ics'
+file_path = '/path/to/file/file_name.extention'
 #res = cs.upload({'tmp': False}, file_path)
 #print(res)
 ```
