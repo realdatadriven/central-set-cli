@@ -1,0 +1,11 @@
+dist
+build
+.env
+**/__pycache__
+__pycache__
+*.pyc
+__pycache__
+tests
+dist
+*.ipynb
+*.egg-info

@@ -1,0 +1,46 @@
+[
+    {
+        "table": "etl_rbase_input",
+        "label": "Extract | Input",
+        "date_ref": "YYYY-MM-DD",
+        "run_all_action": "extract"
+    },
+    {
+        "table": "etl_rbase_output",
+        "detail_table": "etl_rb_output_field",
+        "label": "Transform | Output",
+        "dates_refs": [],
+        "run_all_action": "transform"
+    },
+    {
+        "table": "etl_rbase_quality",
+        "label": "Data Quality",
+        "show": "selected_etlrb['includes_data_quality']",
+        "dates_refs": [],
+        "run_all_action": "data_quality"
+    },
+    {
+        "table": "etl_rb_reconcilia",
+        "detail_table": "etl_rb_reconc_dtail",
+        "label": "Reconciliation",
+        "show": "selected_etlrb['includes_data_reconci']",
+        "dates_refs": [],
+        "run_all_action": "data_reconcilia"
+    },
+    {
+        "table": "etl_rbase_export",
+        "detail_table": "etl_rb_exp_dtail",
+        "label": "Export | Template",
+        "show": "selected_etlrb['includes_exports']",
+        "dates_refs": [],
+        "run_all_action": "export"
+    },
+    {
+        "table": "etl_rbase_notify",
+        "label": "Alert | Notification",
+        "show": "selected_etlrb['includes_notify']",
+        "name": "notify_subject",
+        "dates_refs": [],
+        "run_all_action": "notify"
+    }
+]
