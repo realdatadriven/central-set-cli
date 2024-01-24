@@ -168,6 +168,12 @@ class Init:
             self._c_params = payload
         api = f'{self.host}/dyn_api/crud/delete'
         return self.api_call(api, {'data': self._c_params.get_dict()})
+    def query(self, payload: CreateParams = None):
+        '''QUERY'''
+        if not payload:
+            raise Exception('No PAYLOAD!')
+        api = f'{self.host}/dyn_api/crud/query'
+        return self.api_call(api, {'data': payload})
     def etl(self, action, payload):
         '''GENERIC ETL'''
         if not payload:
