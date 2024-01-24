@@ -1,4 +1,5 @@
 """Central Set Python CLI"""
+# pylint: disable = broad-exception-raised
 # pylint: disable = broad-exception-caught
 # pylint: disable = unused-import
 import re
@@ -91,13 +92,17 @@ class Init:
             self.user = user
         if password:
             self.password = password
+        if not self.user:
+            raise Exception('No user, eather set the CS_USER environmental variable or in .env in the project root!')
+        if not self.password:
+            raise Exception('No password, eather set the CS_PASS environmental variable or in .env in the project root!')
         api = f'{self.host}/dyn_api/login/login'
         payload = {'data': {'username': self.user, 'password': self.password}}
         res = self.api_call(api, payload)
         if res.get('success'):
             self.token = res.get('token')
         else:
-            raise TypeError(res.get('message'))
+            raise Exception(res.get('message'))
         return self
     def get_apps(self):
         '''GET APP'''
@@ -107,7 +112,7 @@ class Init:
             self.apps = res.get('data')
             self.set_app(self.apps[0]['app'])
         else:
-            raise TypeError(res.get('message'))
+            raise Exception(res.get('message'))
         return self
     def get_tables(self, table:str = None):
         '''GET TABLES'''
@@ -116,17 +121,17 @@ class Init:
         if res.get('success'):
             self.tables = res.get('data')
         else:
-            raise TypeError(res.get('message'))
+            raise Exception(res.get('message'))
         return self
     def set_app(self, app: str):
         '''SET APP'''
         if not self.apps:
-            raise TypeError('Run .get_apps first')
+            raise Exception('Run .get_apps first')
         elif len(self.apps) == 0:
-            raise TypeError('Run .get_apps first')
+            raise Exception('Run .get_apps first')
         _app = list(filter(lambda a: a.get('app') == app or a.get('app_id') == app, self.apps))
         if len(_app) == 0:
-            raise TypeError(f'The app {app} doesn\'t seem to exist!')
+            raise Exception(f'The app {app} doesn\'t seem to exist!')
         self.app = _app[0]
         return self
     def read_params(self, params):
@@ -163,6 +168,12 @@ class Init:
             self._c_params = payload
         api = f'{self.host}/dyn_api/crud/delete'
         return self.api_call(api, {'data': self._c_params.get_dict()})
+    def etl(self, action, payload):
+        '''GENERIC ETL'''
+        if not payload:
+            raise Exception('No PAYLOAD!')
+        api = f'{self.host}/dyn_api/etl/{action}'
+        return self.api_call(api, {'data': payload})
     def upload(self, payload: dict, file_path:str):
         '''UPLOAD FILE'''
         post_files = {
@@ -625,4 +636,3 @@ class ETLReportBase():
                     .create()
         print(res.get('msg'))
         return self
-

@@ -11,7 +11,7 @@ authors = [
 description = "A python cli for Central-Set"
 readme = "README.md"
 requires-python = ">=3.7"
-dependencies = ["requests", "dotenv"]
+dependencies = ["requests", "python-dotenv", "python-dateutil"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
